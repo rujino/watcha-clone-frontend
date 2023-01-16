@@ -112,13 +112,13 @@ export default function SeriesDetail() {
                   <Heading mb="10px">감독/출연</Heading>
                   {data?.director.map((directors, index) => (
                     <HStack gap="3">
-                      <Avatar m="5px" />
+                      <Avatar src={directors.photo_url} m="5px" />
                       <Box key={index}>{directors.director_name}</Box>
                     </HStack>
                   ))}
                   {data?.actor.map((actors, index) => (
                     <HStack gap="3">
-                      <Avatar m="5px" />
+                      <Avatar src={actors.photo_url} m="5px" />
                       <Box key={index}>{actors.actor_name}</Box>
                     </HStack>
                   ))}
