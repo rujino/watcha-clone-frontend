@@ -50,7 +50,7 @@ export default function Containers() {
           </Swiper>
         </>
       )}
-      {dramLoading ? (
+      {/* {dramLoading ? (
         <Container size="xl">
           <Spinner />
         </Container>
@@ -80,7 +80,7 @@ export default function Containers() {
             ))}
           </Swiper>
         </>
-      )}
+      )} */}
     </>
   );
 }
