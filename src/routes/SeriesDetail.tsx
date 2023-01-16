@@ -28,7 +28,6 @@ import {
   getSeriesReviews,
   reviewPost,
 } from "../api";
-import useUser from "../lib/useUser";
 import { IReview, ISeriesDetail } from "../types";
 
 export interface IReviewVariables {
@@ -174,6 +173,7 @@ export default function SeriesDetail() {
                   <Grid
                     templateRows="repeat(2, 1fr)"
                     templateColumns="repeat(2, 1fr)"
+                    gap="3"
                   >
                     <GridItem colSpan={1} rowSpan={2}>
                       <Image src={episodes.thumbnail_url} />
