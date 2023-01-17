@@ -74,7 +74,7 @@ export const createUser = (variables: IUserCreateVariables) =>
 /** 유저 로그아웃 */
 export const logOut = () =>
   axiosInstance
-    .post("users/log-out", null, {
+    .post(`users/log-out`, null, {
       headers: {
         "X-CSRFToken": Cookie.get("csrftoken") || "",
       },
