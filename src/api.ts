@@ -76,7 +76,7 @@ export const logOut = () =>
   axiosInstance
     .post(`users/log-out`, null, {
       headers: {
-        "X-CSRFToken": Cookie.get("csrftoken") || "",
+        "X-CSRFToken": Cookie.get("csrftoken"),
       },
     })
     .then((response) => response.data);
