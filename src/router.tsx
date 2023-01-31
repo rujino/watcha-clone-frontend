@@ -5,7 +5,6 @@ import Home from "./routes/Home";
 import NotFound from "./routes/NotFound";
 import SeriesDetail from "./routes/SeriesDetail";
 import MyPage from "./routes/MyPage";
-import FirstPage from "./routes/FirstPage";
 import SignUpPage from "./routes/SignUpPage";
 import WishlistPage from "./routes/WishlistPage";
 import SettingPage from "./routes/SettingPage";

@@ -15,8 +15,8 @@ export const getSeries = () =>
   axiosInstance.get("series/").then((response) => response.data);
 
 /** 드라마장르 시리즈 불러오기 */
-export const getGenreDramaSeries = () =>
-  axiosInstance.get("series/drama").then((response) => response.data);
+// export const getGenreDramaSeries = () =>
+//   axiosInstance.get("series/drama").then((response) => response.data);
 
 /** 특정 시리즈 디테일 불러오기 */
 export const getSeriesDetail = ({ queryKey }: QueryFunctionContext) => {

@@ -122,7 +122,7 @@ export default function SignUpPage() {
             },
           })}
         />
-        <Text>{errors.username?.message}</Text>
+        <Text color={"red"}>{errors.username?.message}</Text>
         <Input
           mb="5px"
           placeholder="비밀번호"
@@ -136,7 +136,7 @@ export default function SignUpPage() {
             },
           })}
         />
-        <Text>{errors.password?.message}</Text>
+        <Text color={"red"}>{errors.password?.message}</Text>
         <Input
           mb="5px"
           placeholder="비밀번호 확인"
@@ -151,14 +151,14 @@ export default function SignUpPage() {
             },
           })}
         />
-        <Text>{errors.password_check?.message}</Text>
+        <Text color={"red"}>{errors.password_check?.message}</Text>
         <Input
-          mb="25px"
           placeholder="이름"
           bgColor="white"
           {...register("name", { required: "이름을 입력해주세요" })}
         />
-        <Text>{errors.name?.message}</Text>
+        <Text color={"red"}>{errors.name?.message}</Text>
+        <Box mb="25px" />
         <Button
           w="100%"
           bgColor="pink.500"

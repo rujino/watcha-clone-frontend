@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useMatch } from "react-router-dom";
 import styled from "styled-components";
+import { FaBoxes, FaFilm } from "react-icons/fa";
+import { Button } from "@chakra-ui/react";
 
 const TabMenu = styled.ul`
   background-color: #141517;
@@ -28,35 +29,34 @@ const TabMenu = styled.ul`
 `;
 
 export default function TabList() {
-  const [currentTab, setCurrentTab] = useState(0);
-
-  const menuArr = [
-    { name: "비디오", to: "/" },
-    { name: "보관함", to: "/wishlist" },
-  ];
-
-  const selectMenuHandler = (index: number) => {
-    setCurrentTab(index);
-  };
-
+  const homeMatch = useMatch("/");
+  const wishListMatch = useMatch("/wishlist");
   return (
     <>
       <div>
         <TabMenu>
-          {menuArr.map((ele, index) => {
-            return (
-              <Link to={ele.to} key={index}>
-                <li
-                  className={
-                    currentTab === index ? "submenu focused" : "submenu"
-                  }
-                  onClick={() => selectMenuHandler(index)}
-                >
-                  {ele.name}
-                </li>
-              </Link>
-            );
-          })}
+          <Link to="/">
+            <Button
+              justifyContent="left"
+              width="100%"
+              variant="none"
+              className={homeMatch ? "submenu focused" : "submenu"}
+              leftIcon={<FaFilm fontSize="20px" />}
+            >
+              비디오
+            </Button>
+          </Link>
+          <Link to="/wishlist">
+            <Button
+              justifyContent="left"
+              width="100%"
+              variant="none"
+              className={wishListMatch ? "submenu focused" : "submenu"}
+              leftIcon={<FaBoxes fontSize="20px" />}
+            >
+              보관함
+            </Button>
+          </Link>
         </TabMenu>
       </div>
     </>

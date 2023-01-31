@@ -1,7 +1,7 @@
 import { Box, Button, Heading, HStack } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { FaPlayCircle, FaPlusCircle } from "react-icons/fa";
+import { FaPlayCircle, FaPlusCircle, FaCheckCircle } from "react-icons/fa";
 import styled from "styled-components";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
@@ -36,7 +36,7 @@ const brightVariants = {
 
 const Card = styled(motion.div)<{ bgPhotos: string }>`
   width: 190px;
-  height: 280px;
+  height: 290px;
   background-color: gray;
   margin-top: 15px;
   margin-bottom: 15px;
@@ -146,7 +146,7 @@ export default function Series({
               variant="link"
             >
               {is_interested ? (
-                <FaPlusCircle style={{ fontSize: "35px", color: "red" }} />
+                <FaCheckCircle style={{ fontSize: "35px", color: "red" }} />
               ) : (
                 <FaPlusCircle
                   style={{

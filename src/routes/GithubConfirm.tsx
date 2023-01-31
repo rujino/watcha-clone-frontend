@@ -1,11 +1,4 @@
-import {
-  Heading,
-  VStack,
-  Text,
-  Spinner,
-  useToast,
-  useQuery,
-} from "@chakra-ui/react";
+import { Heading, VStack, Text, Spinner } from "@chakra-ui/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -34,7 +27,7 @@ export default function GithubConfirm() {
   return (
     <VStack justifyContent={"center"} mt={40}>
       <Heading>Processing log in</Heading>
-      <Text>Don't go anywhere.</Text>
+      <Text>잠시만 기다려주세요.</Text>
       <Spinner size="lg" />
     </VStack>
   );

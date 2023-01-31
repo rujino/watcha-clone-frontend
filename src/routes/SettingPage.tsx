@@ -28,18 +28,10 @@ interface IUploadURLResponse {
 }
 
 export default function SettingPage() {
+  const { user } = useUser();
   const { register, handleSubmit, watch } = useForm<IForm>();
   const navigator = useNavigate();
   const updateNameMutation = useMutation(updateName);
-  const createPhotoMutation = useMutation(createPhoto);
-  const uploadImageMutation = useMutation(uploadImage, {
-    onSuccess: ({ result }: any) => {
-      console.log(result);
-      createPhotoMutation.mutate({
-        avator: `https://imagedelivery.net/vPUWM7VAKMDrq27MB1vliQ/${result.id}/public`,
-      });
-    },
-  });
   const uploadURLMutation = useMutation(getUploadURL, {
     onSuccess: (data: IUploadURLResponse) => {
       console.log(data);
@@ -49,7 +41,15 @@ export default function SettingPage() {
       });
     },
   });
-  const { user } = useUser();
+  const uploadImageMutation = useMutation(uploadImage, {
+    onSuccess: ({ result }: any) => {
+      console.log(result);
+      createPhotoMutation.mutate({
+        avator: `https://imagedelivery.net/vPUWM7VAKMDrq27MB1vliQ/${result.id}/public`,
+      });
+    },
+  });
+  const createPhotoMutation = useMutation(createPhoto);
   const onSubmit = () => {
     uploadURLMutation.mutate();
     updateNameMutation.mutate({ name: watch("name") });
@@ -73,7 +73,7 @@ export default function SettingPage() {
             <VStack spacing={5} mt={10}>
               <FormControl>
                 <VStack>
-                  <Avatar src={user?.avator} size="mg" />
+                  <Avatar src={user?.avator} size="2sm" />
                   <FormLabel
                     display="inline"
                     border="1px"

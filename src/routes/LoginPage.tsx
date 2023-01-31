@@ -37,6 +37,7 @@ export default function LoginPage() {
       queryClient.refetchQueries(["me"]);
     },
     onError: () => {
+      alert("Login error");
       console.log("Login error");
     },
   });
