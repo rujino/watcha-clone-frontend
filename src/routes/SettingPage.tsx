@@ -9,9 +9,11 @@ import {
   Heading,
   HStack,
   Input,
+  Text,
   VStack,
 } from "@chakra-ui/react";
 import { useMutation } from "@tanstack/react-query";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { createPhoto, getUploadURL, updateName, uploadImage } from "../api";
@@ -29,7 +31,14 @@ interface IUploadURLResponse {
 
 export default function SettingPage() {
   const { user } = useUser();
-  const { register, handleSubmit, watch } = useForm<IForm>();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<IForm>();
+  const [value, setValue] = useState(user?.name);
+  const handleChange = (event: any) => setValue(event.target.value);
   const navigator = useNavigate();
   const updateNameMutation = useMutation(updateName);
   const uploadURLMutation = useMutation(getUploadURL, {
@@ -70,14 +79,14 @@ export default function SettingPage() {
         </Heading>
         <Box as="form" onSubmit={handleSubmit(onSubmit)}>
           <HStack>
-            <VStack spacing={5} mt={10}>
+            <VStack spacing={5} mt="20px">
               <FormControl>
                 <VStack>
                   <Avatar src={user?.avator} size="2sm" />
                   <FormLabel
                     display="inline"
                     border="1px"
-                    p="10px"
+                    p="12px 32px 12px 32px"
                     color="whitesmoke"
                     cursor="pointer"
                   >
@@ -99,15 +108,29 @@ export default function SettingPage() {
               </FormControl>
             </VStack>
             <FormControl>
-              <FormLabel fontSize="lg" textColor="white">
-                {user?.name}
+              <FormLabel mb="10px" fontSize="30px" textColor="white">
+                이름
               </FormLabel>
               <Input
-                {...register("name")}
+                {...register("name", {
+                  pattern: {
+                    value: /^.{2,20}$/,
+                    message:
+                      "• 이름은 최소 2자, 최대 20자 까지 입력이 가능해요",
+                  },
+                })}
+                variant="filled"
+                borderRadius="0px"
+                value={value}
                 size="lg"
-                placeholder="변경할 이름"
-                color="white"
+                fontSize="30px"
+                color="gray.500"
+                onChange={handleChange}
               />
+              <Text color={"red"}>{errors.name?.message}</Text>
+              <Text mt="10px" color="whiteAlpha.600">
+                • 이름은 최소 2자, 최대 20자 까지 입력이 가능해요
+              </Text>
             </FormControl>
           </HStack>
           <Divider mt="20px" mb="20px" color="white" />
@@ -120,8 +143,18 @@ export default function SettingPage() {
             type="submit"
             left="20px"
             colorScheme="red"
+            borderRadius="0px"
           >
             완료
+          </Button>
+          <Button
+            ml="15px"
+            type="submit"
+            left="20px"
+            colorScheme="red"
+            borderRadius="0px"
+          >
+            취소
           </Button>
         </Box>
       </Container>

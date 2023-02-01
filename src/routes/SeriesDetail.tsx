@@ -83,10 +83,18 @@ export default function SeriesDetail() {
             {data?.title}
           </Heading>
           <HStack>
-            <Text color="gray.200">{data?.genre.genre_name}</Text>
-            <Text color="gray.200">{data?.video[0].runtime}분</Text>
-            <Text color="gray.200">|</Text>
-            <Text color="gray.200">{data?.possible_age}</Text>
+            <Text color="gray.200" m="3px">
+              {data?.genre.genre_name}
+            </Text>
+            <Text color="gray.200" m="3px">
+              {data?.video[0].runtime}분
+            </Text>
+            <Text color="gray.200" m="3px">
+              |
+            </Text>
+            <Text color="gray.200" m="3px">
+              {data?.possible_age}
+            </Text>
           </HStack>
           <Text color="gray.200" w="700px">
             {data?.summary}
@@ -191,7 +199,9 @@ export default function SeriesDetail() {
                   </HStack>
                 </GridItem>
                 <GridItem colSpan={4}>
-                  <Text color="gray.400">{review.text}</Text>
+                  <Text color="gray.400" w="100%">
+                    {review.text}
+                  </Text>
                 </GridItem>
               </Grid>
             ))}
